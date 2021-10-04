@@ -3,29 +3,30 @@
 namespace App\Repositories;
 
 use App\Models\Course;
+use Illuminate\Database\Eloquent\Collection;
 
 class CourseRepository implements Contracts\CourseRepositoryInterface
 {
-    protected $course;
+    private $model;
 
-    public function __construct(Course $course)
+    public function __construct(Course $model)
     {
-        $this->course = $course;
+        $this->model = $model;
     }
 
 
     /**
      * @return array
      */
-    public function getAllCourses(): array
+    public function getAllCourses(): Collection
     {
-        // TODO: Implement getAllCourses() method.
+        return $this->model->all();
     }
 
     /**
      * @return array
      */
-    public function getCourseById(): array
+    public function getCourseBySlug(): Collection
     {
         // TODO: Implement getCourseById() method.
     }

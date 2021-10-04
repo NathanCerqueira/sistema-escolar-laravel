@@ -6,11 +6,11 @@ use App\Models\Student;
 
 class StudentRepository implements Contracts\StudentRepositoryInterface
 {
-    protected $student;
+    private $model;
 
-    public function __construct(Student $student)
+    public function __construct(Student $model)
     {
-        $this->student = $student;
+        $this->model = $model;
     }
 
     /**

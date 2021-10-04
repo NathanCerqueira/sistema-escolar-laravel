@@ -3,12 +3,14 @@
 namespace App\Repositories\Contracts;
 
 
+use Illuminate\Database\Eloquent\Collection;
+
 interface CourseRepositoryInterface
 {
 
-    public function getAllCourses():array;
+    public function getAllCourses():Collection;
 
-    public function getCourseById():array;
+    public function getCourseBySlug():Collection;
 
     public function createNewCourse():bool;
 

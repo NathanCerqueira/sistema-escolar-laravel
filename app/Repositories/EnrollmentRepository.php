@@ -6,11 +6,11 @@ use App\Models\Enrollment;
 
 class EnrollmentRepository implements Contracts\EnrollmentRepositoryInterface
 {
-    protected $enrollment;
+    private $model;
 
-    public function __construct(Enrollment $enrollment)
+    public function __construct(Enrollment $model)
     {
-        $this->enrollment = $enrollment;
+        $this->model = $model;
     }
 
     /**
