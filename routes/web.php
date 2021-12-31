@@ -2,21 +2,24 @@
 
 use Illuminate\Support\Facades\Route;
 
+
 use App\Http\Controllers\CourseController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('Pages.Home');
+})->name('page.home');
 
-Route::get('/cursos', [CourseController::class, 'index']);
+Route::get('/alunos', function () {
+    return view('Pages.Student');
+})->name('page.student');
+
+Route::get('/cursos', function (){
+    return view('Pages.Course');
+})->name('page.course');
+
+/*
+Route::get('/cursos', [CourseController::class, 'getAllCourses'])->name('course.all');
+Route::get('/cursos/novo-curso', [CourseController::class, 'showFormNewCourse'])->name('course.formNewCourse');
+Route::post('/cursos', [CourseController::class, 'createNewCourse'])->name('course.create');
+*/

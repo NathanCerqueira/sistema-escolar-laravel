@@ -3,16 +3,17 @@
 namespace App\Repositories\Contracts;
 
 
+use App\Http\Requests\CourseRequest;
+use App\Models\Course;
 use Illuminate\Database\Eloquent\Collection;
+
 
 interface CourseRepositoryInterface
 {
 
-    public function getAllCourses():Collection;
+    public function getAllCourses(): Collection;
 
-    public function getCourseBySlug():Collection;
-
-    public function createNewCourse():bool;
+    public function createNewCourse(CourseRequest $request);
 
     public function updateCourse():bool;
 

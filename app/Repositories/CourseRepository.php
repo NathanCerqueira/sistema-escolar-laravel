@@ -2,8 +2,10 @@
 
 namespace App\Repositories;
 
+use App\Http\Requests\CourseRequest;
 use App\Models\Course;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Str;
 
 class CourseRepository implements Contracts\CourseRepositoryInterface
 {
@@ -15,43 +17,27 @@ class CourseRepository implements Contracts\CourseRepositoryInterface
     }
 
 
-    /**
-     * @return array
-     */
     public function getAllCourses(): Collection
     {
         return $this->model->all();
     }
 
-    /**
-     * @return array
-     */
-    public function getCourseBySlug(): Collection
+
+    public function createNewCourse(CourseRequest $request)
     {
-        // TODO: Implement getCourseById() method.
+        $this->model->title = $request->title;
+        $this->model->slug = Str::slug($request->title, '-');
+        $this->model->description = $request->description;
+        return $this->model->save();
     }
 
-    /**
-     * @return bool
-     */
-    public function createNewCourse(): bool
-    {
-        // TODO: Implement createNewCourse() method.
-    }
-
-    /**
-     * @return bool
-     */
     public function updateCourse(): bool
     {
-        // TODO: Implement updateCourse() method.
+        return true;
     }
 
-    /**
-     * @return bool
-     */
     public function deleteCourse(): bool
     {
-        // TODO: Implement deleteCourse() method.
+        return true;
     }
 }
